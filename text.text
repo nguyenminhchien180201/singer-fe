@@ -1,0 +1,75 @@
+-sterp quản lý giá trị các biến thay đổi theo thời gian, 
+Lưu giữ các giá trị trong quá trình hoạt động 
+compoment trước khi render sẽ chạy vào hàm sẽ chạy vào hàm tạo là constructor 
+prop có thể là chuổi số nguyên , string, oject 
+state chỉ oject 
+state kiểm tra các biến trong vòng đời của compoment 
+dùng setstate có thể rerender compoment lại mà không cần load page 
+- mapStateToProps lấy data trong redux
+- key={index} lấy ra các key khác nhau 
+- super kế thừa những props từ cha, khai báo super thì mới dùng được this. 
+- props của thằng con bằng state của thằng cha 
+- event là một biến 
+- truyền props từ cha xuống con 
+- dùng lodash để sử dụng _.isEmpty kiểm tra biến có giá trị= false, k giá trị= true 
+- spa là  Single Page Application không cần tải lại trang khi làm việc với reactjs 
+- elastic search dùng để tìm kiếm những từ khóa không theo thứ tự 
+- Muốn lấy được dữ liệu ra form edit để sửa thì phải truyền props cha sang con 
+- compomentdidupdate thấy sự thay đổi của props thì tự update lại compoment (ví dụ sử dụng compomentdidupdate để update lại dữ liệu trong edit user) 
+- dùng callback function(cú pháp: ,()=>{} ) để trả về đúng theo vế trước  
+- redux có nhiệm vụ như bộ nhớ của ứng dụng reactjs 
+- redux giống như local storage dùng để lưu trữ toàn bộ biến state để dùng mọi nơi trong ứng dụng reactjs 
+- để tránh việc gọi api nhiều lần để lấy dữ liệu thì dùng redux sẻ lưu dữ liệu sau mỗi lần gọi api và muốn lấy dữ liệu sau khi gọi api thì sẽ dùng redux mà k cần gọi api  
++ use redux 
+- sau khi truyền actions vào để redux hiểu chúng ta cần làm gì rồi sau đó actions chạy vào reducer 
+va reducer se lay data va map vao state -> view 
+- dispatch thay đổi kích hoạt trạng thái 
+- dùng persist reducer để lưu lại thông tin trong redux, không bị mất dữ liệu khi reset browser 
+- compoment thay đổi khi state thay đổi
++ reducer
+- lưu các hành động thành công (vidu lưu login thành công, xóa thành công)
+- rootreducer để lưu các reducer con vào, và dùng combinereducer({
+    key:data của reducer
+})
+-> key được gọi tới trong hàm mapStateToProps
+- để fire một actions thì buộc phải dùng keyword là dispatch để bọc lại hàm
+- khi người dùng muốn thay đổi chức năng của compoment thì sẽ chuyển qua giai đoạn unmounting(compomentwillunmount)
+- return actions : =>({})
+- return function : =>{}
+- reactjs chạy trước xong mới redux rồi đến compomentdidupdate
+- reverse đảo ngược lại mảng lên đầu danh sách
+- toast đưa ra alert thông báo
+- bản chất của redux là chỉ fire một actions rồi sẽ chạy vào reducer
+- muốn đọc được ảnh thì phải convert file sang base64
+- khi up ảnh lên server bằng base64 thì nó sẽ trả về dạng buffer
+ nên phải convert file buffer -> base64 mới xem được ảnh 
+- concat dùng để double mảng lên gấp đôi
+- encode mã hóa, decode giải mã
+- mdParser convert html-> text
+orm là gì
+associate(mối quan hệ) là gì
+errorboundary
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

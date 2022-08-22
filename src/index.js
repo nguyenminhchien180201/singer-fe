@@ -9,15 +9,18 @@ import IntlProviderWrapper from "./hoc/IntlProviderWrapper";
 
 
 import { Provider } from 'react-redux';
+//- reduxStore noi luu tru cac thong tin cua redux
+//-  persistor luu tru mot bien cua redux cung giong nhu 1 bien cua local storage
 import reduxStore, { persistor } from './redux';
 
 const renderApp = () => {
     ReactDOM.render(
         <Provider store={reduxStore}>
             <IntlProviderWrapper>
-                <App persistor={persistor}/>
+                <App persistor={persistor} />
             </IntlProviderWrapper>
         </Provider>,
+        //- react se render cac compoment ben trong co id la root 
         document.getElementById('root')
     );
 };
