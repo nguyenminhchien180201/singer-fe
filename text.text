@@ -46,6 +46,8 @@ va reducer se lay data va map vao state -> view
 - concat dùng để double mảng lên gấp đôi
 - encode mã hóa, decode giải mã
 - mdParser convert html-> text
+- raw false convert javascrip object
+- raw true sequelize object  
 orm là gì
 associate(mối quan hệ) là gì
 errorboundary
