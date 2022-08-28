@@ -114,7 +114,7 @@ class UserManage extends Component {
                     <ModalEditUser
                         isOpen={this.state.isOpenModalEditUser}
                         toggleFromParent={this.toggleUserEditModal}
-                        //  truyen gia tri tu cha sang con 
+                        //-  truyen gia tri tu cha sang con 
                         currentUser={this.state.userEdit}
                         editUser={this.doEditUser}
                     />
@@ -134,10 +134,10 @@ class UserManage extends Component {
                                 <th>Address</th>
                                 <th>Actions</th>
                             </tr>
-                            {/* item lay trong arrusers(la arr ojeck) */}
+                            {/* //-item lay trong arrusers(la arr ojeck) */}
                             {arrUsers && arrUsers.map((item, index) => {
                                 return (
-                                    // key={index} lấy ra các key khác nhau
+                                    //- key={index} lấy ra các key khác nhau
                                     <tr key={index}>
                                         <td>{item.email}</td>
                                         <td>{item.firstName}</td>

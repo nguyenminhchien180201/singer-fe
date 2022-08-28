@@ -19,6 +19,7 @@ dùng setstate có thể rerender compoment lại mà không cần load page
 - dùng callback function(cú pháp: ,()=>{} ) để trả về đúng theo vế trước  
 - redux có nhiệm vụ như bộ nhớ của ứng dụng reactjs 
 - redux giống như local storage dùng để lưu trữ toàn bộ biến state để dùng mọi nơi trong ứng dụng reactjs 
+- use redux cũng có thể lưu ở local storage 
 - để tránh việc gọi api nhiều lần để lấy dữ liệu thì dùng redux sẻ lưu dữ liệu sau mỗi lần gọi api và muốn lấy dữ liệu sau khi gọi api thì sẽ dùng redux mà k cần gọi api  
 + use redux 
 - sau khi truyền actions vào để redux hiểu chúng ta cần làm gì rồi sau đó actions chạy vào reducer 

@@ -42,7 +42,6 @@ class App extends Component {
     }
 
     render() {
-        console.log("!23");
         return (
             <Fragment>
                 <Router history={history}>

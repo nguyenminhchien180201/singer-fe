@@ -56,7 +56,7 @@ class ConfirmModal extends Component {
 
     render() {
         const { contentOfConfirmModal } = this.props;
-
+        console.log('â');
         return (
             <Modal isOpen={contentOfConfirmModal.isOpen} className='confirm-modal' centered={true}>
                 <div className="modal-header">

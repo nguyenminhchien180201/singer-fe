@@ -75,7 +75,6 @@ class ManageDoctor extends Component {
             doctorId: this.state.selectedOption.value,
             action: hasOldData === true ? CRUD_ACTIONS.EDIT : CRUD_ACTIONS.CREATE
         })
-        console.log('fafhsafkjs', this.state);
     }
     handleChangeSelect = async (selectedOption) => {
         this.setState({ selectedOption });
@@ -96,7 +95,6 @@ class ManageDoctor extends Component {
                 hasOldData: false
             })
         }
-        console.log('chien day,', res);
     };
     handleOnchangeDesc = (event) => {
         this.setState({

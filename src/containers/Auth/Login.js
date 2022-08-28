@@ -8,8 +8,8 @@ import { handleLoginApi } from '../../services/userService';
 
 class Login extends Component {
     constructor(props) {
-        // kế thừa khi login truyền props xuống
-        //không khai báo super thì react k đọc được và không dùng dc this.
+        //- kế thừa khi login truyền props xuống
+        //-không khai báo super thì react k đọc được và không dùng dc this.
         super(props);
         this.state = {
             username: '',
@@ -42,25 +42,20 @@ class Login extends Component {
             }
             if (data && data.errCode === 0) {
                 this.props.userLoginSuccess(data.user);
-                // console.log(data.user);
-                // console.log('login success');
             }
         } catch (error) {
             if (error.response) {
                 if (error.response.data) {
-                    // console.log(data.message);
                     this.setState({
                         errMessage: error.response.data.message,
                     })
                 }
             }
 
-            console.log('hoi', error.response);
         }
     }
     handleShowHidePassword = () => {
         this.setState({
-            // ! lấy giá trị ngược của biến hiện tại
             isShowPassword: !this.state.isShowPassword
         })
     }

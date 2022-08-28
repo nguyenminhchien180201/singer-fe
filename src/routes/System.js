@@ -10,11 +10,13 @@ class System extends Component {
         const { systemMenuPath, isLoggedIn } = this.props;
         return (
             <React.Fragment>
-                {isLoggedIn && <Header />}
+                {/* {isLoggedIn && <Header />} */}
+                {<Header />}
 
 
                 <div className="system-container">
                     <div className="system-list">
+
                         <Switch>
                             <Route path="/system/user-manage" component={UserManage} />
                             <Route path="/system/user-redux" component={UserRedux} />

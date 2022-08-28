@@ -18,7 +18,7 @@ const persistCommonConfig = {
 const userPersistConfig = {
     ...persistCommonConfig,
     key: 'user',
-    //whitelist lưu thông tin.
+    //-whitelist lưu thông tin.
     whitelist: ['isLoggedIn', 'userInfo']
 };
 const appPersistConfig = {
@@ -28,7 +28,7 @@ const appPersistConfig = {
 }
 export default (history) => combineReducers({
     router: connectRouter(history),
-    //persistReducer lưu thông tin user xuống local storage
+    //-persistReducer lưu thông tin user xuống local storage
     user: persistReducer(userPersistConfig, userReducer),
     app: persistReducer(appPersistConfig, appReducer),
     admin: adminReducer

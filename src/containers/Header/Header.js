@@ -37,11 +37,9 @@ class Header extends Component {
     }
     render() {
         const { processLogout, language, userInfo, isLoggedIn } = this.props;
-        // console.log('142', isLoggedIn);
-        // console.log('1', userInfo);
         return (
             <div className="header-container">
-                {/* thanh navigator */}
+                {/* \\-thanh navigator */}
                 <div className="header-tabs-container">
                     <Navigator menus={this.state.menuApp} />
                 </div>
