@@ -8,8 +8,6 @@ import { handleLoginApi } from '../../services/userService';
 
 class Login extends Component {
     constructor(props) {
-        //- kế thừa khi login truyền props xuống
-        //-không khai báo super thì react k đọc được và không dùng dc this.
         super(props);
         this.state = {
             username: '',
@@ -30,9 +28,9 @@ class Login extends Component {
         })
     }
     handleLogin = async () => {
-        this.setState({
-            errMessage: ''
-        })
+        // this.setState({
+        //     errMessage: ''
+        // })
         try {
             let data = await handleLoginApi(this.state.username, this.state.password);
             if (data && data.errCode !== 0) {
@@ -59,6 +57,11 @@ class Login extends Component {
             isShowPassword: !this.state.isShowPassword
         })
     }
+    handleKeyDown = (event) => {
+        if (event.key === 'Enter' || event.keyCode === 13) {
+            this.handleLogin();
+        }
+    }
     render() {
 
         return (
@@ -80,9 +83,12 @@ class Login extends Component {
 
                                 <input type={this.state.isShowPassword ? 'text' : 'password'} className='form-control'
                                     placeholder='Enter your password'
-                                    onChange={(event) => { this.handleOnChangePassword(event) }} />
+                                    onChange={(event) => { this.handleOnChangePassword(event) }}
+                                    onKeyDown={(event) => this.handleKeyDown(event)}
+                                />
                                 <span
                                     onClick={() => { this.handleShowHidePassword() }}>
+
                                     <i className={this.state.isShowPassword ? 'far fa-eye' : 'far fa-eye-slash'}></i>
                                 </span>
 

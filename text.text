@@ -49,6 +49,8 @@ va reducer se lay data va map vao state -> view
 - mdParser convert html-> text
 - raw false convert javascrip object
 - raw true sequelize object  
+- muon lay duoc state cua redux thi phai boc compoment lai bang connect giua redux va
+- componentDidUpdate sẽ chạy khi render và dũ liệu chưa được cập nhật phải dùng componentDidUpdate
 orm là gì
 associate(mối quan hệ) là gì
 errorboundary

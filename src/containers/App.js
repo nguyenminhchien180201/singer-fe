@@ -83,7 +83,6 @@ class App extends Component {
         )
     }
 }
-//- mapStateToProps tìm lấy những select có trong compoment
 const mapStateToProps = state => {
     return {
         started: state.app.started,

@@ -96,7 +96,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        //- cập nhật lại list user khi create xong user
         fetchUserRedux: () => dispatch(actions.fetchAllUsersStart()),
         deleteAUserRedux: (id) => dispatch(actions.deleteAUser(id))
     };

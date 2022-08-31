@@ -116,7 +116,6 @@ class HomeHeader extends Component {
     }
 
 }
-//- map cai bien cua state cua redux vao function
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
@@ -130,5 +129,4 @@ const mapDispatchToProps = dispatch => {
         changeLanguageAppRedux: (language) => dispatch(changeLanguageApp(language))
     };
 };
-//- muon lay duoc state cua redux thi phai boc compoment lai bang connect giua redux va
 export default connect(mapStateToProps, mapDispatchToProps)(HomeHeader);

@@ -10,7 +10,6 @@ import Select from 'react-select';
 import { fetchAllDoctors } from '../../../store/actions';
 import { CRUD_ACTIONS, LANGUAGES } from '../../../utils';
 import { getDetailInforDoctor } from '../../../services/userService';
-//- mdParser convert html-> text
 const mdParser = new MarkdownIt(/* Markdown-it options */);
 class ManageDoctor extends Component {
     constructor(props) {
@@ -160,7 +159,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchAllDoctors: (id) => dispatch(actions.fetchAllDoctors()),
+        fetchAllDoctors: () => dispatch(actions.fetchAllDoctors()),
         saveDetailDoctor: (data) => dispatch(actions.saveDetailDoctor(data))
     };
 };

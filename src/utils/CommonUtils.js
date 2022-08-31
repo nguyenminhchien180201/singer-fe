@@ -1,5 +1,4 @@
 class CommonUtils {
-    //- đọc file ảnh phía client để up lên server
     static getBase64(file) {
         return new Promise((resolve, reject) => {
             const reader = new FileReader();

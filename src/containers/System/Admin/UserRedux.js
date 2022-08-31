@@ -37,32 +37,13 @@ class UserRedux extends Component {
         this.props.getGenderStart();
         this.props.getPositionStart();
         this.props.getRoleStart();
-        // this.props.dispatch(actions.fetchGenderStart())
-        // try {
-        //     let res = await getAllCodeService('gender');
-        //     if (res && res.errCode === 0) {
-        //         this.setState({
-        //             genderArr: res.data
-        //         })
-        //     } else {
 
-        //     }
-        //     console.log('chcec', res);
-
-        // } catch (e) {
-        //     console.log(e);
-        // }
     }
-    //- componentDidUpdate sẽ chạy khi render và dũ liệu chưa được cập nhật phải dùng componentDidUpdate
     componentDidUpdate(prevProps, prevState, snapshot) {
-        //- update component trong lifecycle, dùng this.props check xem trong redux có dữ liệu gì nếu khác thì 
-        //- setState lại gender và đưa ra html, prevProps là dữ liệu dạng hiện tại
-        //- vòng đời componentDidUpdate sẽ không chạy lại khi prevProps.genderRedux === this.props.genderRedux
         if (prevProps.genderRedux !== this.props.genderRedux) {
             let arrGenders = this.props.genderRedux;
             this.setState({
                 genderArr: arrGenders,
-                //- set giá trị mặc định cho gender khi user không kích vào thì  mặc định sẽ chọn phần tử có key=0
                 gender: arrGenders && arrGenders.length > 0 ? arrGenders[0].keyMap : ''
 
             })
@@ -81,7 +62,6 @@ class UserRedux extends Component {
                 positionId: arrPositions && arrPositions.length > 0 ? arrPositions[0].keyMap : ''
             })
         }
-        //- reset form create user when created user
         if (prevProps.listUsers !== this.props.listUsers) {
             let arrGenders = this.props.genderRedux;
             let arrRoles = this.props.roleRedux;
@@ -105,7 +85,6 @@ class UserRedux extends Component {
     handleOnchangeImage = async (event) => {
         let data = event.target.files;
         let file = data[0];
-        //- read file
         if (file) {
             let base64 = await CommonUtils.getBase64(file);
             let ObjectUrl = URL.createObjectURL(file);
@@ -177,7 +156,6 @@ class UserRedux extends Component {
     }
     handleEditUserFromParent = (user) => {
         let imageBase64 = '';
-        //- convert buffer to base64
         if (user.image) {
             imageBase64 = new Buffer(user.image, 'base64').toString('binary');
         }
@@ -223,7 +201,6 @@ class UserRedux extends Component {
                                 <label><FormattedMessage id="manage-user.email" /></label>
                                 <input className='form-control' type='text'
                                     value={email === null ? '' : email}
-                                    //- key 'email'
                                     onChange={(event) => { this.onChangeInput(event, 'email') }}
                                     disabled={this.state.action === CRUD_ACTIONS.EDIT ? true : false}
                                 />
@@ -369,7 +346,6 @@ class UserRedux extends Component {
 
 const mapStateToProps = state => {
     return {
-        //-key app từ rootreducer
         language: state.app.language,
         genderRedux: state.admin.genders,
         roleRedux: state.admin.roles,

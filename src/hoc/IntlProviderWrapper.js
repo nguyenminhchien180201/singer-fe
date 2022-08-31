@@ -13,7 +13,6 @@ import '@formatjs/intl-relativetimeformat/locale-data/vi';
 import { LanguageUtils } from '../utils'
 
 const messages = LanguageUtils.getFlattenedMessages();
-//- file cau hinh ngon ngu
 class IntlProviderWrapper extends Component {
 
     render() {

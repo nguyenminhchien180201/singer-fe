@@ -15,7 +15,6 @@ export const fetchGenderStart = () => {
             dispatch({
                 type: actionTypes.FETCH_GENDER_START
             })
-            //- gọi api trong redux
             let res = await getAllCodeService("GENDER");
             if (res && res.errCode === 0) {
                 dispatch(fetchGenderSuccess(res.data))
@@ -90,13 +89,11 @@ export const createNewUser = (data) => {
     return async (dispatch, getState) => {
         try {
             let res = await createNewUserService(data);
-            console.log('create', res);
             if (res && res.errCode === 0) {
                 toast.success("Create a new user success!")
                 dispatch(saveUserSuccess())
                 dispatch(fetchAllUsersStart())
             } else {
-                //- muốn fire một action của redux phải bọc dispatch
                 dispatch(saveUserFailed());
             }
         } catch (e) {
@@ -249,6 +246,28 @@ export const saveDetailDoctor = (data) => {
             toast.error('save infor detail doctor error!');
             dispatch({
                 type: actionTypes.SAVE_DETAIL_DOCTOR_FAILDED
+            })
+        }
+    }
+}
+export const fetchAllScheduleTime = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getAllCodeService("Time");
+            if (res && res.errCode === 0) {
+                dispatch({
+                    type: actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_SUCCESS,
+                    dataTime: res.data
+                })
+            } else {
+                dispatch({
+                    type: actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_FAILDED
+                })
+            }
+        } catch (e) {
+            console.log('FETCH_ALLCODE_SCHEDULE_TIME_FAILDED', e);
+            dispatch({
+                type: actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_FAILDED
             })
         }
     }
