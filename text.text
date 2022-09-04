@@ -1,7 +1,7 @@
 -sterp quản lý giá trị các biến thay đổi theo thời gian, 
 Lưu giữ các giá trị trong quá trình hoạt động 
 compoment trước khi render sẽ chạy vào hàm sẽ chạy vào hàm tạo là constructor 
-prop có thể là chuổi số nguyên , string, oject 
+prop có thể là chuỗi số nguyên , string, oject 
 state chỉ oject 
 state kiểm tra các biến trong vòng đời của compoment 
 dùng setstate có thể rerender compoment lại mà không cần load page 
@@ -50,7 +50,8 @@ va reducer se lay data va map vao state -> view
 - raw false convert javascrip object
 - raw true sequelize object  
 - muon lay duoc state cua redux thi phai boc compoment lai bang connect giua redux va
-- componentDidUpdate sẽ chạy khi render và dũ liệu chưa được cập nhật phải dùng componentDidUpdate
+- componentDidUpdate sẽ chạy khi render và dữ liệu chưa được cập nhật phải dùng componentDidUpdate
+- userIsNotAuthenticated kiểm tra login
 orm là gì
 associate(mối quan hệ) là gì
 errorboundary

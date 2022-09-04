@@ -86,11 +86,13 @@ class UserManage extends Component {
     doEditUser = async (user) => {
         try {
             let res = await editUserService(user);
-            if (res && res.errCode === 0) {
+            console.log(res);
+            if (res && res.errCode === 2) {
                 this.setState({
                     isOpenModalEditUser: false
                 })
-                await this.getAllUsersFromReact()
+                await this.getAllUsersFromReact();
+
             } else {
                 alert(res.errCode)
             }
