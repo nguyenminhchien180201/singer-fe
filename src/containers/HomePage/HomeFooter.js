@@ -13,7 +13,6 @@ class HomeFooter extends Component {
 }
 const mapStateToProps = state => {
     return {
-        isLoggedIn: state.user.isLoggedIn,
     };
 };
 

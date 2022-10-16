@@ -4,10 +4,9 @@ import Header from '../containers/Header/Header';
 class Doctor extends Component {
 
     render() {
-        const { isLoggedIn } = this.props;
         return (
             <React.Fragment>
-                {isLoggedIn && <Header />}
+                <Header />
                 <div className='system-container'>
                     doctor
                 </div>
@@ -19,7 +18,6 @@ class Doctor extends Component {
 
 const mapStateToProps = state => {
     return {
-        isLoggedIn: state.user.isLoggedIn
     };
 };
 

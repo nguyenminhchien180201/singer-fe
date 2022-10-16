@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from "react-intl";
-import Slider from "react-slick";
-import * as actions from '../../../store/actions';
-import { LANGUAGES } from '../../../utils';
 import { withRouter } from 'react-router';
 class OutStandingDoctor extends Component {
 
@@ -17,7 +13,6 @@ class OutStandingDoctor extends Component {
 }
 const mapStateToProps = state => {
     return {
-        isLoggedIn: state.user.isLoggedIn,
     };
 };
 

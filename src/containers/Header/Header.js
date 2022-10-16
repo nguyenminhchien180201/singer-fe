@@ -3,13 +3,10 @@ import { connect } from 'react-redux';
 
 import * as actions from "../../store/actions";
 import './Header.scss';
-import { LANGUAGES } from '../../utils';
-import { FormattedMessage } from 'react-intl';
 import _ from 'lodash';
 class Header extends Component {
 
     render() {
-        const { processLogout, language, userInfo } = this.props;
         return (
             <div className="header-container">
 
@@ -23,7 +20,6 @@ class Header extends Component {
 
 const mapStateToProps = state => {
     return {
-        isLoggedIn: state.user.isLoggedIn,
 
     };
 };

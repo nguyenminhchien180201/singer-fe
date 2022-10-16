@@ -7,7 +7,6 @@ import Header from '../containers/Header/Header';
 import ManageDoctor from '../containers/System/Admin/ManageDoctor';
 class System extends Component {
     render() {
-        const { systemMenuPath, isLoggedIn } = this.props;
         return (
             <React.Fragment>
                 {<Header />}
@@ -20,7 +19,6 @@ class System extends Component {
                             <Route path="/system/user-manage" component={UserManage} />
                             <Route path="/system/user-redux" component={UserRedux} />
                             <Route path="/system/manage-doctor" component={ManageDoctor} />
-                            <Route component={() => { return (<Redirect to={systemMenuPath} />) }} />
                         </Switch>
                     </div>
                 </div>
@@ -31,7 +29,6 @@ class System extends Component {
 
 const mapStateToProps = state => {
     return {
-        isLoggedIn: state.user.isLoggedIn
     };
 };
 

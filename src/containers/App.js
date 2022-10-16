@@ -5,12 +5,11 @@ import { ConnectedRouter as Router } from 'connected-react-router';
 import { history } from '../redux'
 
 
-import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authentication';
+import { userIsAuthenticated } from '../hoc/authentication';
 
 import { path } from '../utils'
 import DetailDoctor from './Patient/Doctor/DetailDoctor';
 import Home from '../routes/Home';
-import Login from './Auth/Login';
 import System from '../routes/System';
 
 import HomePage from './HomePage/HomePage.js';
@@ -27,7 +26,6 @@ class App extends Component {
                         <div className="content-container">
                             <Switch>
                                 <Route path={path.HOME} exact component={(Home)} />
-                                <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
                                 <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
                                 <Route path={'/doctor/'} component={userIsAuthenticated(Doctor)} />
                                 <Route path={path.HOMEPAGE} component={HomePage} />
@@ -44,8 +42,6 @@ class App extends Component {
 }
 const mapStateToProps = state => {
     return {
-
-        isLoggedIn: state.user.isLoggedIn
     };
 };
 
