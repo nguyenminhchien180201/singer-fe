@@ -10,7 +10,6 @@ class System extends Component {
         const { systemMenuPath, isLoggedIn } = this.props;
         return (
             <React.Fragment>
-                {/* {isLoggedIn && <Header />} */}
                 {<Header />}
 
 
@@ -32,7 +31,6 @@ class System extends Component {
 
 const mapStateToProps = state => {
     return {
-        systemMenuPath: state.app.systemMenuPath,
         isLoggedIn: state.user.isLoggedIn
     };
 };

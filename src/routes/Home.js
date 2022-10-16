@@ -9,7 +9,6 @@ class Home extends Component {
         let linkToRedirect = isLoggedIn ? '/system/user-manage' : '/home';
         return (
             <Redirect to={linkToRedirect} />
-            // <div>llaskdjfald;fj</div>
         );
     }
 

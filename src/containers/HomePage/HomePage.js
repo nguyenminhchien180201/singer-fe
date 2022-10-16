@@ -13,27 +13,18 @@ import 'slick-carousel/slick/slick-theme.css';
 class HomePage extends Component {
 
     render() {
-        let settings = {
-            dots: false,
-            infinite: false,
-            speed: 500,
-            slidesToShow: 4,
-            slidesToScroll: 1
-        };
+
         return (
             <div>
 
                 <HomeHeader isShowBanner={true} />
                 <Specialty
-                    settings={settings}
                 />
                 <MedicalFacility
-                    settings={settings}
                 />
                 <OutStandingDoctor
-                    settings={settings}
                 />
-                <HandBook settings={settings} />
+                <HandBook />
                 <About />
                 <HomeFooter />
             </div>
@@ -44,7 +35,6 @@ class HomePage extends Component {
 
 const mapStateToProps = state => {
     return {
-        isLoggedIn: state.user.isLoggedIn
     };
 };
 
