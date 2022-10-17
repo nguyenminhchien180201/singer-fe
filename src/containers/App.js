@@ -3,17 +3,11 @@ import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter as Router } from 'connected-react-router';
 import { history } from '../redux'
-
-
-import { userIsAuthenticated } from '../hoc/authentication';
-
 import { path } from '../utils'
 import DetailDoctor from './Patient/Doctor/DetailDoctor';
 import Home from '../routes/Home';
 import System from '../routes/System';
-
 import HomePage from './HomePage/HomePage.js';
-
 import Doctor from '../routes/Doctor';
 class App extends Component {
 
@@ -26,14 +20,12 @@ class App extends Component {
                         <div className="content-container">
                             <Switch>
                                 <Route path={path.HOME} exact component={(Home)} />
-                                <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
-                                <Route path={'/doctor/'} component={userIsAuthenticated(Doctor)} />
+                                <Route path={path.SYSTEM} component={(System)} />
+                                <Route path={'/doctor/'} component={(Doctor)} />
                                 <Route path={path.HOMEPAGE} component={HomePage} />
                                 <Route path={path.DETAIL_DOCTOR} component={DetailDoctor} />
                             </Switch>
                         </div>
-
-
                     </div>
                 </Router>
             </Fragment>
