@@ -9,6 +9,7 @@ import Home from '../routes/Home';
 import System from '../routes/System';
 import HomePage from './HomePage/HomePage.js';
 import Doctor from '../routes/Doctor';
+import { changeLanguageApp } from '../store/actions';
 class App extends Component {
 
     render() {
@@ -34,11 +35,13 @@ class App extends Component {
 }
 const mapStateToProps = state => {
     return {
+
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+
     };
 };
 

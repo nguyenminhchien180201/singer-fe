@@ -2,17 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/styles.scss';
-
 import App from './containers/App';
-
-
 import { Provider } from 'react-redux';
 import reduxStore, { persistor } from './redux';
+import IntlProviderWrapper from "./hoc/IntlProviderWrapper";
 
 const renderApp = () => {
     ReactDOM.render(
         <Provider store={reduxStore}>
-            <App persistor={persistor} />
+            <IntlProviderWrapper>
+                <App persistor={persistor} />
+            </IntlProviderWrapper>
         </Provider>,
         document.getElementById('root')
     );

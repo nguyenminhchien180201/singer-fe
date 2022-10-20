@@ -6,7 +6,7 @@ class Home extends Component {
 
     render() {
         return (
-            <Redirect to={'/system/user-manage'} />
+            <Redirect to={'/home'} />
         );
     }
 
