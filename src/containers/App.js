@@ -9,7 +9,9 @@ import Home from '../routes/Home';
 import System from '../routes/System';
 import HomePage from './HomePage/HomePage.js';
 import Doctor from '../routes/Doctor';
-import { changeLanguageApp } from '../store/actions';
+import Login from './Auth/Login';
+import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authentication';
+
 class App extends Component {
 
     render() {
@@ -21,7 +23,8 @@ class App extends Component {
                         <div className="content-container">
                             <Switch>
                                 <Route path={path.HOME} exact component={(Home)} />
-                                <Route path={path.SYSTEM} component={(System)} />
+                                <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
+                                <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
                                 <Route path={'/doctor/'} component={(Doctor)} />
                                 <Route path={path.HOMEPAGE} component={HomePage} />
                                 <Route path={path.DETAIL_DOCTOR} component={DetailDoctor} />
@@ -35,7 +38,7 @@ class App extends Component {
 }
 const mapStateToProps = state => {
     return {
-
+        isLoggedIn: state.user.isLoggedIn
     };
 };
 

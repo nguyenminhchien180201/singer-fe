@@ -11,9 +11,6 @@ export const adminMenu = [
             {
                 name: 'menu.admin.manage-doctor', link: '/system/manage-doctor'
             },
-            // {
-            //     name: 'menu.admin.manage-admin', link: '/system/user-admin'
-            // },
             {
                 name: 'menu.doctor.manage-schedule', link: '/doctor/manage-schedule'
             }
