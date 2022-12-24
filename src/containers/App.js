@@ -10,6 +10,8 @@ import System from '../routes/System';
 import HomePage from './HomePage/HomePage.js';
 import Doctor from '../routes/Doctor';
 import Login from './Auth/Login';
+import { ToastContainer } from 'react-toastify';
+
 import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authentication';
 
 class App extends Component {
@@ -30,6 +32,17 @@ class App extends Component {
                                 <Route path={path.DETAIL_DOCTOR} component={DetailDoctor} />
                             </Switch>
                         </div>
+                        <ToastContainer
+                            position="bottom-right"
+                            autoClose={5000}
+                            hideProgressBar={false}
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                        />
                     </div>
                 </Router>
             </Fragment>

@@ -17,6 +17,19 @@ const getAllCodeService = (inputType) => {
 const createNewUserService = (data) => {
     return axios.post('/api/create-new-user', data);
 }
+const deleteUserService = (id) => {
+    return axios.delete('/api/delete-user', { data: { id } })
+}
+const editUserService = (inputdata) => {
+    return axios.put('/api/edit-user', inputdata);
+}
+const getAllDoctors = () => {
+    return axios.get('/api/get-all-doctors');
+}
+const saveDetailDoctorService = (data) => {
+    console.log('data', data);
+    return axios.post('/api/save-infor-doctors', data);
+}
 export {
     getTopDoctorHomeService,
     getDetailInforDoctor,
@@ -24,4 +37,8 @@ export {
     getAllUsers,
     getAllCodeService,
     createNewUserService,
+    deleteUserService,
+    editUserService,
+    getAllDoctors,
+    saveDetailDoctorService
 }

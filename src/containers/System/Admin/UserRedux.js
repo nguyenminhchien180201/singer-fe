@@ -6,6 +6,8 @@ import './UserRedux.scss';
 import 'react-image-lightbox/style.css';
 import TableManageUser from './TableManageUser';
 import { LANGUAGES, CRUD_ACTIONS, CommonUtils } from '../../../utils';
+import Lightbox from 'react-image-lightbox';
+import { toast } from 'react-toastify';
 class UserRedux extends Component {
     constructor(props) {
         super(props);
@@ -83,8 +85,46 @@ class UserRedux extends Component {
             ...copyState
         })
     }
+    checkValidateInput = () => {
+        let isValid = true;
+        let arrCheck = ['email', 'password', 'firstName', 'lastName', 'phoneNumber', 'address'];
+        for (let i = 0; i < arrCheck.length; i++) {
+            if (!this.state[arrCheck[i]]) {
+                isValid = false;
+                toast.error('Missing input reuired: ', arrCheck[i]);
+                console.log('i');
+                break;
+            }
+            return;
+        }
+    }
+    handleEditUserFromParent = (user) => {
+        let imageBase64 = '';
+        if (user.image) {
+            imageBase64 = new Buffer(user.image, 'base64').toString('binary');
+            this.setState({
+                email: user.email,
+                password: 'CODE',
+                firstName: user.firstName,
+                lastName: user.lastName,
+                address: user.address,
+                phoneNumber: user.phoneNumber,
+                gender: user.gender,
+                role: user.roleId,
+                positionId: user.positionId,
+                avatar: '',
+                previewImgURL: imageBase64,
+                action: CRUD_ACTIONS.EDIT,
+                userEditId: user.id
+            }, () => {
+                console.log('vao day di');
+            })
+        }
+    }
     handleSaveUser = () => {
         let { action } = this.state;
+        let isValid = this.checkValidateInput();
+        if (isValid === false) return;
         // console.log('2');
         // console.log('a', action);
         if (action === CRUD_ACTIONS.CREATE) {
@@ -103,6 +143,40 @@ class UserRedux extends Component {
                 avatar: this.state.avatar
             })
         }
+        if (action === CRUD_ACTIONS.EDIT) {
+            this.props.editAUserRedux({
+                id: this.state.userEditId,
+                email: this.state.email,
+                password: this.state.password,
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                address: this.state.address,
+                phoneNumber: this.state.phoneNumber,
+                gender: this.state.gender,
+                roleId: this.state.role,
+                positionId: this.state.positionId,
+                avatar: this.state.avatar
+            })
+        }
+    }
+    handleOnchangeImage = async (event) => {
+        let data = event.target.files;
+        let file = data[0];
+        if (file) {
+            let base64 = await CommonUtils.getBase64(file);
+            let ObjectUrl = URL.createObjectURL(file)
+            this.setState({
+                avatar: base64,
+                previewImgURL: ObjectUrl
+            })
+
+        }
+    }
+    openPreviewImage = () => {
+        if (!this.state.previewImgURL) return;
+        this.setState({
+            isOpen: true
+        })
     }
     render() {
         let language = this.props.language;
@@ -110,9 +184,9 @@ class UserRedux extends Component {
         let genders = this.state.genderArr;
         let roles = this.state.roleArr;
         let positions = this.state.positionArr;
-
         let { email, password, firstName, lastName,
             phoneNumber, address, gender, positionId, role, avatar } = this.state;
+        // console.log(avatar);
         return (
             <div className="user-redux-container" >
                 <div className='outtitle'>
@@ -128,6 +202,7 @@ class UserRedux extends Component {
                                 <input className='form-control' type='text'
                                     value={email === null ? '' : email}
                                     onChange={(event) => { this.onChangeInput(event, 'email') }}
+                                    disabled={this.state.action === CRUD_ACTIONS.EDIT ? true : false}
                                 />
                             </div>
                             <div className='col-3'>
@@ -135,6 +210,7 @@ class UserRedux extends Component {
                                 <input className='form-control' type='password'
                                     value={password === null ? '' : password}
                                     onChange={(event) => { this.onChangeInput(event, 'password') }}
+                                    disabled={this.state.action === CRUD_ACTIONS.EDIT ? true : false}
                                 />
                             </div>
                             <div className='col-3'>
@@ -217,6 +293,7 @@ class UserRedux extends Component {
                                 <label><FormattedMessage id='manage-user.image' /></label>
                                 <div className='preview-img-container'>
                                     <input id='previewImg' type='file' hidden
+                                        onChange={(event) => this.handleOnchangeImage(event)}
                                     />
 
                                     <label className='label-upload' htmlFor='previewImg'>
@@ -225,6 +302,7 @@ class UserRedux extends Component {
                                     </label>
                                     <div className='preview-image'
                                         style={{ backgroundImage: `url(${this.state.previewImgURL})` }}
+                                        onClick={() => this.openPreviewImage()}
                                     >
                                     </div>
                                 </div>
@@ -245,11 +323,19 @@ class UserRedux extends Component {
                         </div>
                         <div className='col-12 mb-5'>
                             <TableManageUser
-                            // handleEditUserFromParentKey={}
+                                handleEditUserFromParentKey={this.handleEditUserFromParent}
                             />
                         </div>
                     </div>
                 </div>
+                {this.state.isOpen === true &&
+                    <Lightbox
+                        mainSrc={this.state.previewImgURL}
+                        onCloseRequest={() => this.setState({ isOpen: false })}
+
+                    />
+
+                }
             </div>
         )
     }
@@ -273,6 +359,7 @@ const mapDispatchToProps = dispatch => {
         getPositionStart: () => dispatch(actions.fetchPositionStart()),
         getRoleStart: () => dispatch(actions.fetchRoleStart()),
         createNewUser: (data) => dispatch(actions.createNewUser(data)),
+        editAUserRedux: (data) => dispatch(actions.editAUser(data))
     };
 };
 
